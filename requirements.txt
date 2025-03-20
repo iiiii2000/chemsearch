@@ -1,0 +1,7 @@
+requests
+cs50
+Flask
+Flask-Session
+collections
+collections
+json

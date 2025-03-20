@@ -1,0 +1,169 @@
+/* Search Bar */
+.search-form {
+    position: relative;
+    max-width: 800px;
+    /* Key to align suggestions with search bar */
+    flex-grow: 1;
+    /* Allow it to stretch */
+}
+
+.suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px !important;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    z-index: 2
+        /* Hidden by default */
+}
+
+.suggestions-box li {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.suggestions-box li.highlighted {
+    background-color: #1470F099;
+    font-weight: bold;
+    /* Highlighting the selected item */
+}
+
+
+/* Clear input button for search field */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    margin-left: .4em;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    cursor: pointer;
+}
+
+/* Define a class for inverted colors */
+.inverted {
+    filter: invert(1);
+}
+
+
+/* Two-Panel-Layout */
+.split-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    height: 100vh;
+    background-color: #212529;
+    /* Use the full viewport height */
+}
+
+
+.panel-left {
+    flex: 1;
+    /* Panel on the left takes up more space */
+    padding: 2rem;
+    padding-bottom: 25px;
+    overflow: auto;
+}
+
+.panel-right {
+    flex: 1;
+    /* Panel on the right takes up less space */
+    padding: 2rem;
+    word-break: break-all;
+    overflow: auto;
+}
+
+.splitter {
+    width: 5px;
+    background-color: #44475a;
+}
+
+/* Responsive behavior */
+/* Close Button */
+.close-btn {
+    display: none; /* Not show by default */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 1.6rem;
+}
+
+
+/* Existing mobile popout styles */
+@media (max-width: 768px) {
+    .split-container {
+        flex-direction: column;
+    }
+
+    .panel-left {
+        display: block; /* Always visible */
+    }
+    .panel-right {
+        display: none;
+        position: fixed;
+        background-color: inherit;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        height: 70vh;
+        border: 2px solid;
+        z-index: 1090; /* Higher than Bootstraps*/
+        overflow: auto;
+        word-break: break-all;
+        border-radius: 10px;
+    }
+
+    .panel-right.active {
+        display: inline-block;
+    }
+
+    .close-btn {
+        display: inline-block;
+    }
+}
+
+/* Loading Overlay */
+#loading-overlay {
+    display: none !important;
+    /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent dark background */
+    z-index: 1050;
+    /* Higher than Bootstrap modals */
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Table design */
+table, td {
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+td {
+    padding: 1rem;
+}
+td.fitwidth {
+    word-break: normal !important;
+}
+
+/* Blur effect for main-container */
+.blurred {
+    filter: blur(5px);
+    pointer-events: none; /* Disable interactions with blurred content */
+}
+
